@@ -62,4 +62,7 @@ else
   echo "check: SKIPPED - xmllint not installed"
 fi
 
+echo "check: profile stats privacy filter (fixture test)"
+sh scripts/update-profile.test.sh
+
 echo "check: green"
