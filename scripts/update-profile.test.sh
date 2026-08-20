@@ -14,6 +14,13 @@
 #   3. re-running against the SAME fixtures is byte-identical (the
 #      renderer is deterministic — required for the splice's
 #      exit-0-with-no-diff contract).
+#   4. the commit search query carries `is:public` (QPMSEC-334 fix round:
+#      without it, the rendered commit count silently changes meaning by
+#      executor — an ambient local token sees private commits, a scoped CI
+#      app token doesn't, for the identical query string). This is a
+#      direct source check, not just reliance on the fixture filename
+#      matching the query — a regression here must fail loudly even if a
+#      fixture happened to still be findable.
 #
 # Run: sh scripts/update-profile.test.sh
 
@@ -32,6 +39,19 @@ fail() {
 pass() {
   echo "update-profile.test: ok - $1"
 }
+
+# --- static check: commit search must be public-only ----------------------
+# The fixture-name match below (run 1) only proves the query string is
+# stable across a refactor; it can't prove the qualifier is present at all
+# if a fixture for the wrong (missing-qualifier) query also happened to
+# exist. Grep the actual source for the belt-and-braces guarantee.
+
+commit_query_line=$(grep -n 'search_total_count "commits"' "$UPDATER") \
+  || fail "could not find the commits search_total_count call in $UPDATER"
+case "$commit_query_line" in
+  *"is:public"*) pass "commit search query includes is:public" ;;
+  *) fail "commit search query is missing is:public qualifier: $commit_query_line" ;;
+esac
 
 # --- run 1 --------------------------------------------------------------
 

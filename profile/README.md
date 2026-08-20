@@ -33,6 +33,6 @@ one gate, and merges only after a different AI model family reviews it.
 
 <br>
 
-<sub><!-- DYNAMIC:START -->1 repositories · 130 commits this month · powered by Shell · updated 2026-08-20<!-- DYNAMIC:END --></sub>
+<sub><!-- DYNAMIC:START -->1 repositories · 3 commits this month · powered by Shell · updated 2026-08-20<!-- DYNAMIC:END --></sub>
 
 </div>

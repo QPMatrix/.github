@@ -141,7 +141,14 @@ build_aggregate() {
     'to_entries | sort_by(-.value) | .[0:$n] | map(.key)')
 
   since=$(since_30d)
-  commits_30d=$(search_total_count "commits" "$qualifier:$OWNER committer-date:>$since")
+  # is:public is required: without it the commit search API scopes results
+  # to whatever the executing token can see (all commits, including
+  # private repos, for an ambient local token; only what a scoped CI app
+  # token has access to otherwise), so the same query silently returns a
+  # different number depending on who/what runs this script. repo_names
+  # above is already public-only via type=public, so this makes commits_30d
+  # match that same public-only meaning (QPMSEC-334 fix round).
+  commits_30d=$(search_total_count "commits" "$qualifier:$OWNER committer-date:>$since is:public")
   today="${TODAY_OVERRIDE:-$(date -u +%Y-%m-%d)}"
 
   jq -n \
