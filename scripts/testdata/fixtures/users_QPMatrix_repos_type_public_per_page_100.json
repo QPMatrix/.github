@@ -1,0 +1,5 @@
+[
+  {"name": "public-repo-one", "private": false, "language": "Rust"},
+  {"name": "public-repo-two", "private": false, "language": "TypeScript"},
+  {"name": "FAKE-PRIVATE-nuclear-launch-codes-9f3e", "private": true, "language": "Python"}
+]
