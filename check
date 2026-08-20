@@ -1,6 +1,35 @@
 #!/bin/sh
-# Starter gate from repo birth — EXTEND ME as the repo grows content.
-# Hook = CI = this file (parity rule).
+# Repo gate — docs-only check now that the repo carries real content
+# (profile/README.md, root README.md). Extend ME as content grows.
+# Hook = CI = this file (repo-gates-and-hooks parity rule).
 set -e
+
+echo "check: shell syntax"
 find . -name '*.sh' -not -path './.git/*' -exec sh -n {} +
+
+echo "check: markdown fenced code blocks balanced"
+for f in $(find . -name '*.md' -not -path './.git/*'); do
+  count=$(grep -c '^```' "$f" || true)
+  if [ $((count % 2)) -ne 0 ]; then
+    echo "check: FAILED - unbalanced fenced code block in $f" >&2
+    exit 1
+  fi
+done
+
+echo "check: markdown relative links resolve"
+for f in $(find . -name '*.md' -not -path './.git/*'); do
+  dir=$(dirname "$f")
+  targets=$(grep -o '\]([^)]*)' "$f" | sed 's/^](//; s/)$//')
+  for target in $targets; do
+    case "$target" in
+      http://*|https://*|mailto:*|"#"*) continue ;;
+    esac
+    path="${target%%#*}"
+    if [ -n "$path" ] && [ ! -e "$dir/$path" ]; then
+      echo "check: FAILED - broken relative link '$target' in $f" >&2
+      exit 1
+    fi
+  done
+done
+
 echo "check: green"
