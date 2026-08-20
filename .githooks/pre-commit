@@ -1,0 +1,4 @@
+#!/bin/sh
+# Delegates to the repo gate — hooks mirror CI (repo-gates-and-hooks).
+set -e
+exec ./check

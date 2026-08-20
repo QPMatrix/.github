@@ -1,0 +1,16 @@
+# Gate = ./check, mirrored by .githooks/pre-commit (parity rule).
+# checkout pin verified at birth via:
+#   gh api repos/actions/checkout/releases/latest --jq .tag_name  -> v7.0.1
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - run: ./check

@@ -1,0 +1,6 @@
+#!/bin/sh
+# Starter gate from repo birth — EXTEND ME as the repo grows content.
+# Hook = CI = this file (parity rule).
+set -e
+find . -name '*.sh' -not -path './.git/*' -exec sh -n {} +
+echo "check: green"
