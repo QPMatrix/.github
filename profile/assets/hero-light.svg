@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 200" width="960" height="200" role="img" aria-labelledby="qpHeroLightTitle">
+  <title id="qpHeroLightTitle">QPMatrix — engineering studio for AI-native systems</title>
+  <defs>
+    <linearGradient id="qpGridLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338CA"/>
+      <stop offset="100%" stop-color="#0E7490"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <rect x="40"  y="61" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.45"/>
+    <rect x="68"  y="61" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.75"/>
+    <rect x="96"  y="61" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.45"/>
+    <rect x="40"  y="89" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.75"/>
+    <rect x="68"  y="89" width="22" height="22" rx="5" fill="#0E7490"/>
+    <rect x="96"  y="89" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.75"/>
+    <rect x="40"  y="117" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.45"/>
+    <rect x="68"  y="117" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.75"/>
+    <rect x="96"  y="117" width="22" height="22" rx="5" fill="url(#qpGridLight)" opacity="0.45"/>
+  </g>
+  <text x="146" y="122" font-family="-apple-system, 'Segoe UI', system-ui, sans-serif" font-size="64" font-weight="700" letter-spacing="-1.5" fill="#0D1117">QPMatrix</text>
+</svg>
