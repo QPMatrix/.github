@@ -1,6 +1,7 @@
 # .github
 
-QPMatrix — org profile and community defaults
+This is the QPMatrix org profile repo — GitHub renders the public org page
+from [`profile/README.md`](profile/README.md).
 
 ## Setup (every clone)
 
