@@ -37,7 +37,9 @@ concurrency:
 
 jobs:
   update-profile:
-    runs-on: ubuntu-latest
+    # Runner is a flag, never a literal (QPMSEC-639): vars.QPM_RUNNER, else
+    # ubuntu-latest — labels and precedence live in qpm-gh-workflows' README "Runners".
+    runs-on: ${{ vars.QPM_RUNNER || 'ubuntu-latest' }}
     steps:
       # Pinned version verified via:
       #   gh api repos/actions/create-github-app-token/releases/latest --jq .tag_name

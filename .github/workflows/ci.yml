@@ -10,7 +10,9 @@ permissions:
   contents: read
 jobs:
   gate:
-    runs-on: ubuntu-latest
+    # Runner is a flag, never a literal (QPMSEC-639): vars.QPM_RUNNER, else
+    # ubuntu-latest — labels and precedence live in qpm-gh-workflows' README "Runners".
+    runs-on: ${{ vars.QPM_RUNNER || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v7.0.1
       - run: ./check
