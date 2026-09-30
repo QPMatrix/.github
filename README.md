@@ -1,7 +1,7 @@
 # .github
 
 This is the QPMatrix org profile repo — GitHub renders the public org page
-from [`profile/README.md`](profile/README.md).
+from `profile/README.md` (removed; the live profile is github.com/QPMatrix/QPMatrix).
 
 The block between `<!-- DYNAMIC:START -->` / `<!-- DYNAMIC:END -->` near
 the foot of that page is refreshed automatically by
